@@ -2,6 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import { 
+  LoginSection,
+  LoginTextDiv,
+  LoginBox,
+  LoginInputDiv,
+  LoginInput,
+  LoginBtn 
+} from '../styledComponents';
+
 const Login = ({ apiUrl }) => {
   const emailInput = useRef();
   const pwdInput = useRef();
@@ -25,7 +34,7 @@ const Login = ({ apiUrl }) => {
   }
 
   const onKeyUp = (e) => {
-    if(e.key === 'Enter'){
+    if(e.key === 'Enter' || e.key === 'ArrowDown'){
       pwdInput.current.focus();
     }
   }
@@ -46,33 +55,44 @@ const Login = ({ apiUrl }) => {
   }
 
   return (
-    <div>
-      <div>
-        <input
-          type="email"
-          placeholder='email을 입력해주세요...'
-          value={email}
-          name="email"
-          onChange={onChange}
-          ref={emailInput}
-          onKeyUp={onKeyUp}
-         />
-      </div>
-      <div>
-        <input
-          type="password"
-          placeholder='비밀번호를 입력해주세요...'
-          value={pwd}
-          name="pwd"
-          onChange={onChange}
-          ref={pwdInput}
-          onKeyUp={onKeyUp}
-         />
-      </div>
-      <div>
-        <button type="button" onClick={onSubmit}>로그인</button>
-      </div>
-    </div>
+    <>
+      <LoginSection>
+        <LoginTextDiv>
+          <span>Welcome! 로그인을 해주세요.</span>
+        </LoginTextDiv>
+
+        <LoginBox>
+          <LoginInputDiv>
+            <LoginInput
+              type="email"
+              placeholder='email을 입력해주세요...'
+              value={email}
+              name="email"
+              onChange={onChange}
+              ref={emailInput}
+              onKeyUp={onKeyUp}
+              autoComplete='nope'
+             />
+          </LoginInputDiv>
+
+          <LoginInputDiv>
+            <LoginInput
+              type="password"
+              placeholder='비밀번호를 입력해주세요...'
+              value={pwd}
+              name="pwd"
+              onChange={onChange}
+              ref={pwdInput}
+              autoComplete='nope'
+            />
+          </LoginInputDiv>
+        </LoginBox>
+
+        <LoginBtn onClick={onSubmit}>
+          <span>Login</span>
+        </LoginBtn>
+      </LoginSection>
+    </>
   );
 };
 

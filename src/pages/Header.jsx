@@ -17,6 +17,9 @@ const Header = () => {
   const goRegister = () => {
     navigate('/register')
   }
+  const goCropImg = () => {
+    navigate('/crop_img')
+  }
 
   return (
     <>
@@ -29,6 +32,7 @@ const Header = () => {
           <HeaderSubMenu>
             <Btn text={'Login'} onClick={goLogin} />
             <Btn text={'Sign up'} onClick={goRegister} />
+            <Btn text={'Crop Img'} onClick={goCropImg} />
           </HeaderSubMenu>
         </HeaderInner>
       </HeaderDiv>
@@ -36,4 +40,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);
