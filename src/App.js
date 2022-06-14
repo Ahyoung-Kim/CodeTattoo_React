@@ -73,7 +73,9 @@ const App = () => {
       <Reset />
       <Header cookies={cookies} removeCookie={removeCookie} />
 
-      <EntrySection>
+      {/* display: flex; */}
+      {/* EntrySection: 카테고리랑 메인컨텐츠 flex 하려고 */}
+      <EntrySection>  
         <Category />
 
         <Routes>

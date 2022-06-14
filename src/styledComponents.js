@@ -57,6 +57,7 @@ export const HoverBtnStyle = {
   border: '3px solid #484848',
 };
 
+// LOGIN
 
 export const LoginSection = styled.div`
   background-color:#c9c9c9;
@@ -115,6 +116,9 @@ export const EntrySection = styled.section`
   display: flex;
 `;
 
+
+// Category
+
 export const CategoryDiv = styled.div`
   width: 250px;
   border-right: .1px solid #484848;
@@ -160,6 +164,7 @@ justify-content: center;
 align-items: center;
 `;
 
+// Entry 페이지 검은 박스 
 export const BtnBox = styled.div`
 display: flex;
 justify-content: center;
@@ -182,6 +187,8 @@ cursor: pointer;
 `;
 
 // Enroll
+// TattooistEnrollment
+// Singup
 export const EnrollDiv = styled.div`
 margin: 0 auto;
   padding: 60px;
@@ -254,7 +261,8 @@ export const EnrollBtn = styled.div`
   cursor: pointer;
 `;
 
-// Tattooist - Drafts List
+// Drafts List
+// ImgLoad
 export const DraftsListDiv = styled.div`
 margin: 0 auto;
 width: 1400px;
@@ -262,7 +270,10 @@ min-height: 725px;
 position: relative;
 `;
 
+// 도안 등록 버튼
 export const DraftsBtn = styled.div`
+box-sizing: border-box;
+border: 3px solid black;
 position: absolute;
 top: 30px;
 right: 30px;
@@ -271,16 +282,19 @@ background-color: #000;
 font-size: 18px;
 font-weight: bold;
 border-radius: 5px;
-width: 100px;
-line-height: 30px;
+width: 110px;
+line-height: 35px;
 text-align: center;
 cursor: pointer;
+
+transition: .45s;
 `;
 
-export const ImgListDiv = styled.div`
-position: absolute;
-top: 100px;
-`
+// export const ImgListDiv = styled.div`
+// position: absolute;
+// top: 100px;
+// `
+
 export const ImgInputDiv = styled.div`
 margin: 50px auto;
 color: #fff;
@@ -331,6 +345,7 @@ cursor: pointer;
 `
 
 // Draft List
+// ShowDraftList
 export const DraftMainDiv = styled.div`
 margin: 0 auto;
 min-height: 725px;
@@ -338,7 +353,7 @@ width: 1400px;
 
 display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: stretch;
 align-items: center;
 `;
 
@@ -352,6 +367,18 @@ width: 700px;
 text-align: center;
 margin: 30px 0 100px;
 border-radius: 10px;
+`;
+
+export const EmptyDraftBox = styled.div`
+margin-top: 150px;
+color: #6e6e6e;
+font-weight: bold;
+font-size: 20px;
+border-radius: 20px;
+width: 400px;
+line-height: 35px;
+text-align: center;
+box-shadow: 5px 5px 15px 0px #6e6e6e;
 `;
 
 export const DraftMainBox = styled.div`
