@@ -7,8 +7,26 @@ import {
   CategorySubText,
   CategoryLi
 } from '../styledComponents';
+import { useNavigate } from 'react-router-dom';
 
 const Category = () => {
+  const navigate = useNavigate();
+
+  // User
+
+
+  // Tattooist
+  const goTattooistDrafts = () => {
+    navigate('/tattooist/drafts')
+  }
+
+  // Tattoo
+  const goAllDrafts = () => {
+    navigate('/tattoo/all');
+  }
+
+
+  // Board
   return (
     <>
       <CategoryDiv>
@@ -18,21 +36,32 @@ const Category = () => {
 
           <CategoryUl>
             <CategorySubText>User</CategorySubText>
-            <CategoryLi>도안 찜</CategoryLi>
-            <CategoryLi>타투이스트 찜</CategoryLi>
+            <CategoryLi>My drafts list</CategoryLi>
+            <CategoryLi>My tattooists list</CategoryLi>
+          </CategoryUl>
+
+          <CategoryUl>
+            <CategorySubText>Tattooist</CategorySubText>
+            <CategoryLi onClick={goTattooistDrafts}>
+              My drafts list
+            </CategoryLi>
+            <CategoryLi>Calendar</CategoryLi>
+            <CategoryLi>Contact</CategoryLi>
           </CategoryUl>
 
           <CategoryUl>
             <CategorySubText>Tattoo</CategorySubText>
-            <CategoryLi>최신 도안</CategoryLi>
-            <CategoryLi>인기 도안</CategoryLi>
-            <CategoryLi>전체 도안</CategoryLi>
+            <CategoryLi>Best drafts</CategoryLi>
+            <CategoryLi>Recent drafts</CategoryLi>
+            <CategoryLi onClick={goAllDrafts}>
+              All drafts
+            </CategoryLi>
           </CategoryUl>
 
           <CategoryUl>
-            <CategorySubText>게시판</CategorySubText>
+            <CategorySubText>Board</CategorySubText>
             <CategoryLi>Q n A</CategoryLi>
-            <CategoryLi>문의</CategoryLi>
+            <CategoryLi>Ask</CategoryLi>
             <CategoryLi>Contact</CategoryLi>
           </CategoryUl>
 

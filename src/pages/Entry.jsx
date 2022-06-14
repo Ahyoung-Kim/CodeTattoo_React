@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   MainDiv,
   BtnBox,
@@ -6,29 +6,52 @@ import {
 } from '../styledComponents';
 import { useNavigate } from 'react-router-dom';
 
-const Entry = () => {
+const contentBtnStyle = {
+  width: '400px',
+  height: '400px'
+}
+
+const Entry = ({ cookies }) => {
+  const [isTattooist, setIsTattooist] = useState(false);
+
+  useEffect(()=>{
+    if(cookies.user_id && cookies.isTattooist){
+      setIsTattooist(true);
+    } else {
+      setIsTattooist(false);
+    }
+  }, [])
+
   const navigate = useNavigate();
 
-  const goEnroll = () => {
-    navigate('/tattooist_enrollment');
+  const goUploadImage = () => {
+    navigate('/tattooist/img_load');
   }
 
-  const goLogin = () => {
-    navigate('/login');
+  const goDrafts = () => {
+    navigate('/tattoo/all');
   }
-  const goRegister = () => {
-    navigate('/register')
+  const goTattooists = () => {
+
   }
   
   return (
     <>
       <MainDiv>
 
-        <BtnBox>
-          <ContentBtn onClick={goEnroll}>Tattooist 등록</ContentBtn>
-          <ContentBtn onClick={goLogin}>User 로그인</ContentBtn>
-          <ContentBtn onClick={goRegister}>회원가입</ContentBtn>
-        </BtnBox>
+        {isTattooist ? (
+          <BtnBox>
+            <ContentBtn onClick={goDrafts}>Show Drafts</ContentBtn>
+            <ContentBtn onClick={goTattooists}>Show Tattooists</ContentBtn>
+            <ContentBtn onClick={goUploadImage}>Upload Draft</ContentBtn>
+          </BtnBox>
+
+        ) : (
+          <BtnBox>
+            <ContentBtn style={contentBtnStyle} onClick={goDrafts}>Show Drafts</ContentBtn>
+            <ContentBtn style={contentBtnStyle} onClick={goTattooists}>Show Tattooists</ContentBtn>
+          </BtnBox>
+        )}
 
       </MainDiv>
     </>

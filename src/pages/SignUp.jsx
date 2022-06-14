@@ -10,11 +10,13 @@ import {
   EnrollLi,
   EnrollLabel,
   EnrollInput,
-  EnrollBtn
+  EnrollBtn,
+  EnrollBigText
 } from '../styledComponents';
 
 const divStyle = {
-  marginBottom: '115px'
+  marginTop: '50px',
+  marginBottom: '50px'
 }
 
 const SignUp = ({ apiUrl }) => {
@@ -77,6 +79,7 @@ const SignUp = ({ apiUrl }) => {
       <EnrollDiv style={divStyle}>
 
         <EnrollBox>
+          <EnrollBigText>Create account</EnrollBigText>
           <EnrollUl>
             <EnrollText>회원가입</EnrollText>
 

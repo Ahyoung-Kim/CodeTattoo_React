@@ -10,19 +10,18 @@ import {
   EnrollLi,
   EnrollLabel,
   EnrollInput,
-  EnrollBtn
+  EnrollBtn,
+  EnrollBigText
 } from '../styledComponents';
 
-const TattooistEnroll = ({ apiUrl }) => {
+const TattooistEnroll = ({ apiUrl, cookies, setCookie }) => {
   const input1 = useRef();
   const input2 = useRef();
   const input3 = useRef();
   const input4 = useRef();
   const input5 = useRef();
-  const input6 = useRef();
 
   const [inputs, setInputs] = useState({
-    user_id: '',
     nickname: '',
     specialize: ''
   });
@@ -32,7 +31,7 @@ const TattooistEnroll = ({ apiUrl }) => {
     contact: ''
   })
 
-  const { user_id, nickname, specialize } = inputs;
+  const { nickname, specialize } = inputs;
   const { name, location, contact } = office;
 
   useEffect(()=>{
@@ -65,15 +64,13 @@ const TattooistEnroll = ({ apiUrl }) => {
         input4.current.focus();
       } else if (id == 4){
         input5.current.focus();
-      } else if (id == 5){
-        input6.current.focus();
-      }
+      } 
     }
   }
 
   const enrollment = async() => {
     const body = {
-      user_id: user_id,
+      user_id: cookies.user_id,
       nickname: nickname,
       specialize: specialize,
       office: office
@@ -81,14 +78,25 @@ const TattooistEnroll = ({ apiUrl }) => {
 
     const res = await axios.post(`${apiUrl}/tattooist/enrollment`, body);
     console.log('response: ', res);
+
+    if(res.data.success){
+      console.log('enrollment OK');
+      setCookie('isTattooist', res.data.tattooist_id, {maxAge: 3000});
+      window.location.replace('/');
+    } else {
+      console.log('enrollment fail');
+    }
   }
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    console.log('info: ', inputs);
-    console.log('office: ', office);
+    if(!nickname || !specialize || !name || !location || !contact){
+      console.log('빈 문자열 발생')
+      alert('모든 정보를 입력해주세요!')
+      return
+    }
     enrollment();
-    navigate('/');
+    //navigate('/');
   }
 
   return (
@@ -96,6 +104,7 @@ const TattooistEnroll = ({ apiUrl }) => {
       <EnrollDiv>
 
         <EnrollBox>
+          <EnrollBigText>Tattooist Enroll</EnrollBigText>
           <EnrollUl>
             <EnrollText>Information</EnrollText>
 
@@ -115,29 +124,14 @@ const TattooistEnroll = ({ apiUrl }) => {
             </EnrollLi>
 
             <EnrollLi>
-              <EnrollLabel> ID
-                <EnrollInput 
-                  type="text"
-                  name="user_id"
-                  value={user_id}
-                  onChange={onChange}
-                  id="2"
-                  ref={input2}
-                  onKeyUp={onKeyUp}
-                  autoComplete='nope'
-                />
-              </EnrollLabel>
-            </EnrollLi>
-
-            <EnrollLi>
               <EnrollLabel> Specialize
                 <EnrollInput 
                   type="text"
                   name="specialize"
                   value={specialize}
                   onChange={onChange}
-                  id="3"
-                  ref={input3}
+                  id="2"
+                  ref={input2}
                   onKeyUp={onKeyUp}
                   autoComplete='nope'
                 />
@@ -155,8 +149,8 @@ const TattooistEnroll = ({ apiUrl }) => {
                   name="name"
                   value={name}
                   onChange={onOffice}
-                  id="4"
-                  ref={input4}
+                  id="3"
+                  ref={input3}
                   onKeyUp={onKeyUp}
                   autoComplete='nope'
                 />
@@ -170,8 +164,8 @@ const TattooistEnroll = ({ apiUrl }) => {
                   name="location"
                   value={location}
                   onChange={onOffice}
-                  id="5"
-                  ref={input5}
+                  id="4"
+                  ref={input4}
                   onKeyUp={onKeyUp}
                   autoComplete='nope'
                 />
@@ -185,8 +179,8 @@ const TattooistEnroll = ({ apiUrl }) => {
                   name="contact"
                   value={contact}
                   onChange={onOffice}
-                  id="6"
-                  ref={input6}
+                  id="5"
+                  ref={input5}
                   autoComplete='nope'
                 />
               </EnrollLabel>

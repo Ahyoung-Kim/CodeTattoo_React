@@ -36,8 +36,8 @@ export const HeaderSubMenu = styled.div`
 export const SubMenuBtn = styled.div`
   box-sizing: border-box;
   background-color: white;
-  width: 75px;
-  height: 30px;
+  width: 100px;
+  height: 35px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -127,6 +127,7 @@ export const CategoryBox = styled.div`
 `;
 
 export const CategoryText = styled.p`
+font-weight: bold;
 font-size: 20px;
 padding: 10px;
 margin-top: 30px;
@@ -138,6 +139,7 @@ margin: 30px auto;
 `;
 
 export const CategorySubText = styled.p`
+font-weight: bold;
 font-size: 18px;
 border-bottom: .1px solid rgba(0, 0, 0, 0.3);
 `;
@@ -150,7 +152,12 @@ cursor: pointer;
 // Main Content
 export const MainDiv = styled.div`
 margin: 0 auto;
-padding: 212px 0;
+min-height: 725px;
+width: 1400px;
+
+display: flex;
+justify-content: center;
+align-items: center;
 `;
 
 export const BtnBox = styled.div`
@@ -163,7 +170,7 @@ export const ContentBtn = styled.div`
 background-color: #000;
 color: white;
 width: 300px;
-height: 200px;
+height: 300px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -187,7 +194,17 @@ export const EnrollBox = styled.div`
   width: 900px;
   margin: 0 auto;
   padding: 0 0 50px;
+  overflow: hidden;
 `;
+
+export const EnrollBigText = styled.div`
+background-color: #000;
+color: #fff;
+font-size:28px;
+font-weight: bold;
+text-align: center;
+line-height: 40px;
+`
 
 export const EnrollUl = styled.ul`
   margin-bottom: 50px;
@@ -199,7 +216,7 @@ export const EnrollText = styled.p`
   color: #484848;
   padding: 10px 20px;
   border-bottom: 0.1px solid #b0b0b0;
-  margin: 20px 0;
+  margin: 0 0 20px;
 `;
 
 export const EnrollLi = styled.li`
@@ -236,6 +253,148 @@ export const EnrollBtn = styled.div`
   border-radius: 7px;
   cursor: pointer;
 `;
+
+// Tattooist - Drafts List
+export const DraftsListDiv = styled.div`
+margin: 0 auto;
+width: 1400px;
+min-height: 725px;
+position: relative;
+`;
+
+export const DraftsBtn = styled.div`
+position: absolute;
+top: 30px;
+right: 30px;
+color: white;
+background-color: #000;
+font-size: 18px;
+font-weight: bold;
+border-radius: 5px;
+width: 100px;
+line-height: 30px;
+text-align: center;
+cursor: pointer;
+`;
+
+export const ImgListDiv = styled.div`
+position: absolute;
+top: 100px;
+`
+export const ImgInputDiv = styled.div`
+margin: 50px auto;
+color: #fff;
+background-color: #000;
+font-weight: bold;
+height: 40px;
+width: 200px;
+border-radius: 5px;
+
+display: flex;
+justify-content: center;
+align-items: center;
+`
+export const ImgInput = styled.input`
+display: block;
+margin-left: 10px;
+`
+
+export const LoadedImgDiv = styled.div`
+margin: 0 auto;
+text-align: center;
+`
+export const LoadedImg = styled.img`
+box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+width: 300px;
+height: 300px;
+object-fit: contain;
+`
+
+export const LoadedImgTitle = styled.input`
+margin-top: 50px;
+width: 350px;
+height: 40px;
+font-size: 18px;
+border-radius: 7px;
+border-color: rgba(0, 0, 0, .3);
+`;
+export const EnrollImgBtn = styled.div`
+margin: 50px auto;
+color: #fff;
+background-color: #000;
+font-weight: bold;
+font-size: 20px;
+width: 350px;
+line-height: 40px;
+border-radius: 7px;
+cursor: pointer;
+`
+
+// Draft List
+export const DraftMainDiv = styled.div`
+margin: 0 auto;
+min-height: 725px;
+width: 1400px;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+
+export const CategoryTitle = styled.div`
+font-size: 28px;
+font-weight: bold;
+color: white;
+background-color: black;
+line-height: 45px;
+width: 700px;
+text-align: center;
+margin: 30px 0 100px;
+border-radius: 10px;
+`;
+
+export const DraftMainBox = styled.div`
+width: 1370px;
+display: flex;
+justify-content: stretch;
+align-items: stretch;
+flex-wrap: wrap;
+`;
+
+export const DraftImgBox = styled.div`
+cursor: pointer;
+margin: 20px 20px 50px;
+`;
+
+export const DraftImg = styled.img`
+object-fit: contain;
+box-sizing: border-box;
+border-radius: 8px;
+box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+background-color: white;
+`;
+
+export const DraftImgInfo = styled.div`
+margin-top: 20px;
+margin-left: 20px;
+display: flex;
+align-items: center;
+`;
+
+export const DraftTattooistDiv = styled.div`
+width: 30px;
+height: 30px;
+background-color: black;
+margin-right: 10px;
+border-radius: 50%;
+`;
+
+export const DraftImgTitle = styled.p`
+font-size: 18px;
+text-align: center;
+`
+
 
 
 //  FOOTER

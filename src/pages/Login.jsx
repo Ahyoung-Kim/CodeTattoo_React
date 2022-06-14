@@ -11,7 +11,7 @@ import {
   LoginBtn 
 } from '../styledComponents';
 
-const Login = ({ apiUrl }) => {
+const Login = ({ apiUrl, setCookie }) => {
   const emailInput = useRef();
   const pwdInput = useRef();
   const [info, setInfo] = useState({
@@ -39,19 +39,35 @@ const Login = ({ apiUrl }) => {
     }
   }
 
+  const pushCookie = (data) => {
+    setCookie('user_id', data.user_id, {maxAge:3000})
+    setCookie('name', data.name, {maxAge:3000})
+    setCookie('location', data.location, {maxAge:3000})
+    setCookie('isTattooist', '', {maxAge:3000})
+  }
+
+  const navigate = useNavigate();
   const submitLogin = async() => {
     const body = {
       email: email,
       pwd: pwd
     }
     const res = await axios.post(`${apiUrl}/login`, body)
-    console.log(res);
-  }
+    console.log(res.data);
 
-  const navigate = useNavigate();
+    if(res.data.success){
+      pushCookie(res.data.user_info);
+      //window.location.replace('/');
+      console.log('쿠키 저장 성공')
+      //navigate('/')
+      window.location.replace('/');
+    } else {
+      window.location.replace('/login');
+      alert('Login 정보가 잘못되었습니다. 다시 시도해주세요.')
+    }
+  }
   const onSubmit = () => {
     submitLogin();
-    navigate('/');
   }
 
   return (
